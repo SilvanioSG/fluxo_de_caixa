@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fluxo de Caixa - Silvanio Gois Fictícia Ltda.</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+    .painel {
+      background: #1e1e1e;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.1);
+      max-width: 1000px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #00d4ff;
+    }
+    .perfil {
+      margin-bottom: 2rem;
+      color: #bdfaff;
+      font-size: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+      background-color: #222;
+    }
+    th, td {
+      padding: 0.75rem;
+      text-align: right;
+      border-bottom: 1px solid #333;
+    }
+    td:first-child, th:first-child {
+      text-align: left;
+    }
+    .positivo { color: #3efc9b; font-weight: bold; }
+    .grafico {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 2rem auto;
+      max-width: 800px;
+    }
+    footer {
+      font-size: 0.9rem;
+      color: #ccc;
+      border-top: 1px dashed #444;
+      padding-top: 1rem;
+    }
+    a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="painel">
+    <div class="perfil">
+      <p><strong>Silvanio Gois</strong> — Técnico em Administração e Edificações | Graduando em Processos Gerenciais</p>
+      <p>Email: <a href="mailto:sg@silvaniogois.com.br" style="color:#00d4ff;">sg@silvaniogois.com.br</a></p>
+    </div>
+
+    <h1>Fluxo de Caixa - Silvanio Gois Fictícia Ltda.</h1>
+    <h2>Período: Janeiro a Dezembro de 2024</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Mês</th>
+          <th>Entradas (R$)</th>
+          <th>Saídas (R$)</th>
+          <th>Saldo do Mês (R$)</th>
+          <th>Caixa Acumulado (R$)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Janeiro</td><td>700.000</td><td>560.000</td><td class="positivo">140.000</td><td>140.000</td></tr>
+        <tr><td>Fevereiro</td><td>720.000</td><td>575.000</td><td class="positivo">145.000</td><td>285.000</td></tr>
+        <tr><td>Março</td><td>750.000</td><td>590.000</td><td class="positivo">160.000</td><td>445.000</td></tr>
+        <tr><td>Abril</td><td>730.000</td><td>600.000</td><td class="positivo">130.000</td><td>575.000</td></tr>
+        <tr><td>Maio</td><td>740.000</td><td>610.000</td><td class="positivo">130.000</td><td>705.000</td></tr>
+        <tr><td>Junho</td><td>760.000</td><td>615.000</td><td class="positivo">145.000</td><td>850.000</td></tr>
+        <tr><td>Julho</td><td>780.000</td><td>630.000</td><td class="positivo">150.000</td><td>1.000.000</td></tr>
+        <tr><td>Agosto</td><td>790.000</td><td>645.000</td><td class="positivo">145.000</td><td>1.145.000</td></tr>
+        <tr><td>Setembro</td><td>800.000</td><td>655.000</td><td class="positivo">145.000</td><td>1.290.000</td></tr>
+        <tr><td>Outubro</td><td>820.000</td><td>670.000</td><td class="positivo">150.000</td><td>1.440.000</td></tr>
+        <tr><td>Novembro</td><td>830.000</td><td>675.000</td><td class="positivo">155.000</td><td>1.595.000</td></tr>
+        <tr><td>Dezembro</td><td>850.000</td><td>680.000</td><td class="positivo">170.000</td><td>1.765.000</td></tr>
+      </tbody>
+    </table>
+
+    <div class="grafico">
+      <canvas id="graficoFluxo"></canvas>
+    </div>
+    <div class="grafico">
+      <canvas id="graficoAcumulado"></canvas>
+    </div>
+
+    <footer>
+      <p><strong>📌 Observação:</strong> O fluxo de caixa positivo contínuo ao longo de 2024 demonstra excelente capacidade de geração de caixa e controle das despesas operacionais da empresa.</p>
+    </footer>
+  </div>
+
+  <script>
+    const ctx1 = document.getElementById('graficoFluxo').getContext('2d');
+    new Chart(ctx1, {
+      type: 'bar',
+      data: {
+        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        datasets: [
+          {
+            label: 'Entradas',
+            data: [700000, 720000, 750000, 730000, 740000, 760000, 780000, 790000, 800000, 820000, 830000, 850000],
+            backgroundColor: '#36a2eb'
+          },
+          {
+            label: 'Saídas',
+            data: [560000, 575000, 590000, 600000, 610000, 615000, 630000, 645000, 655000, 670000, 675000, 680000],
+            backgroundColor: '#ff6384'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            labels: {
+              color: 'black'
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: 'white' },
+            grid: { color: '#444' }
+          },
+          y: {
+            ticks: {
+              color: 'white',
+              callback: value => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+            },
+            grid: { color: '#444' }
+          }
+        }
+      }
+    });
+
+    const ctx2 = document.getElementById('graficoAcumulado').getContext('2d');
+    new Chart(ctx2, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        datasets: [
+          {
+            label: 'Caixa Acumulado',
+            data: [140000, 285000, 445000, 575000, 705000, 850000, 1000000, 1145000, 1290000, 1440000, 1595000, 1765000],
+            borderColor: '#3efc9b',
+            backgroundColor: 'rgba(62, 252, 155, 0.2)',
+            fill: true,
+            tension: 0.3,
+            pointRadius: 4,
+            pointHoverRadius: 6
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            labels: {
+              color: 'black'
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: 'white' },
+            grid: { color: '#444' }
+          },
+          y: {
+            ticks: {
+              color: 'white',
+              callback: value => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+            },
+            grid: { color: '#444' }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
