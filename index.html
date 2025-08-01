@@ -13,6 +13,7 @@
       background-color: #121212;
       color: #f0f0f0;
     }
+
     .painel {
       background: #1e1e1e;
       padding: 2rem;
@@ -21,14 +22,17 @@
       max-width: 1000px;
       margin: auto;
     }
+
     h1, h2 {
       color: #00d4ff;
     }
+
     .perfil {
       margin-bottom: 2rem;
       color: #bdfaff;
       font-size: 1rem;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -37,33 +41,47 @@
       overflow-x: auto;
       display: block;
     }
+
     th, td {
       padding: 0.75rem;
       text-align: right;
       border-bottom: 1px solid #333;
       white-space: nowrap;
     }
+
     td:first-child, th:first-child {
       text-align: left;
     }
-    .positivo { 
-      color: #3efc9b; 
-      font-weight: bold; 
+
+    .positivo {
+      color: #3efc9b;
+      font-weight: bold;
     }
-    .grafico {
+
+    .grafico-container {
+      overflow-x: auto;
+      margin: 2rem 0;
+    }
+
+    canvas {
       background-color: #fff;
       border-radius: 8px;
       padding: 1rem;
-      margin: 2rem auto;
-      max-width: 100%;
+      min-width: 400px;
+      width: 100%;
+      height: auto;
       box-sizing: border-box;
+      display: block;
+      margin: auto;
     }
+
     footer {
       font-size: 0.9rem;
       color: #ccc;
       border-top: 1px dashed #444;
       padding-top: 1rem;
     }
+
     a {
       text-decoration: none;
     }
@@ -90,7 +108,7 @@
         font-size: 0.85rem;
       }
 
-      .grafico {
+      canvas {
         padding: 0.5rem;
       }
     }
@@ -132,10 +150,11 @@
       </tbody>
     </table>
 
-    <div class="grafico">
+    <div class="grafico-container">
       <canvas id="graficoFluxo"></canvas>
     </div>
-    <div class="grafico">
+
+    <div class="grafico-container">
       <canvas id="graficoAcumulado"></canvas>
     </div>
 
@@ -168,9 +187,7 @@
         responsive: true,
         plugins: {
           legend: {
-            labels: {
-              color: 'black'
-            }
+            labels: { color: 'black' }
           }
         },
         scales: {
@@ -211,9 +228,7 @@
         responsive: true,
         plugins: {
           legend: {
-            labels: {
-              color: 'black'
-            }
+            labels: { color: 'black' }
           }
         },
         scales: {
